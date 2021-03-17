@@ -1,0 +1,47 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <windows.h>
+
+using namespace std;
+
+void Line40(ifstream &fin, ofstream &fout)
+{
+	char ch;
+	int i = 0;
+	while (true)
+	{
+		if (fin.eof()) break;
+		ch = fin.get();
+		if (ch == '.') break;
+		if (i == 39)
+		{
+			fout << "\n";
+			i = 0;
+			continue;
+		}
+		fout << ch;
+		i++;
+	}
+}
+int main()
+{
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	setlocale(LC_ALL,"ru");
+
+	string path = "text.txt";
+
+	ofstream fout(path);
+	fout << ("gsgsdgsdgsdgsdgsdgsdgsdgsdgsdgsdgsdgsdgsdgsdgsdgsdgjtjtjsjstjtjstjtjstjstjstjstjtjtjththtjtjdtjtjtjtjthsrhsrhthshsthsthsthtjstjstjsjsst.hsthstjsthsj");
+	fout.close();
+	
+	ifstream fin(path);
+	ofstream fout2("text2.txt");
+	Line40(fin,fout2);
+	fin.close();
+	fout2.close();
+
+	system("pause");
+	return 0;
+}
